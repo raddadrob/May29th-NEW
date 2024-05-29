@@ -308,12 +308,10 @@
             const popoverDescription = document.getElementById('popover-description');
             const popoverValue = document.getElementById('popover-value');
             const saveButton = document.getElementById('saveEditButton');
-            const deleteButton = document.getElementById('deleteButton');
 
             popoverDescription.innerText = description;
             popoverValue.value = formatNumber(value);
             saveButton.onclick = () => saveEditItem(collection, id);
-            deleteButton.onclick = () => deleteItem(collection, id);
 
             popover.style.display = 'flex';
         }
@@ -332,12 +330,6 @@
                 loadData();
                 closePopover();
             }
-        }
-
-        async function deleteItem(collection, id) {
-            await db.collection(collection).doc(id).delete();
-            loadData();
-            closePopover();
         }
 
         async function addAsset(collection) {
@@ -420,7 +412,6 @@
                 <a href="details.html">Balance Sheet</a>
                 <a href="calendar.html">Cash Flow</a>
                 <a href="real_estate.html">Real Estate</a>
-                <a href="credit_cards.html">Credit Cards</a> <!-- Added Credit Cards link -->
             </div>
             <div class="menu-buttons">
                 <button class="logoff-button" onclick="logOff()">Log Off</button>
@@ -544,7 +535,6 @@
         <div id="popover-description"></div>
         <input type="text" id="popover-value" placeholder="Enter value">
         <button id="saveEditButton">Save</button>
-        <button id="deleteButton">Delete</button> <!-- Add this line -->
         <button onclick="closePopover()">Cancel</button>
     </div>
     <script>
@@ -555,6 +545,9 @@
     </script>
 </body>
 </html>
+
+
+
 
 
 
